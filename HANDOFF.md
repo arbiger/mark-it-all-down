@@ -4,16 +4,30 @@
 
 1. `README.md`
 2. `DEV-LOG.md`
-3. `/Users/george/Documents/Georges/01 🎯 Projects/Mark-It-Down/docs/plans/2026-08-29-mark-it-all-down-v2-product-plan.md`
-4. `/Users/george/Documents/Georges/01 🎯 Projects/Mark-It-Down/docs/plans/2026-08-29-mark-it-all-down-v2-phase-0-evidence-spec.md`
+3. `docs/plans/2026-08-29-mark-it-all-down-v2-product-plan.md`
+4. `docs/plans/2026-08-29-mark-it-all-down-v2-phase-0-evidence-spec.md`
+5. `v1-swift/README.md` — what v1 does that v2 has not yet ported
+
+## Repositories
+
+- v2 (this project): <https://github.com/arbiger/mark-it-all-down>
+- v1 (separate, still working): <https://github.com/arbiger/mark-it-down>
+
+Both are public under the `arbiger` account. v1 was not modified by the merge
+apart from committing and publishing the hybrid PDF engine work as `2729685`.
 
 ## Current state
 
-Mark-It-All-Down v2 is a local-first Tauri desktop converter. It is a sibling
-project and does not modify the original Swift/Python Mark-It-Down v1 app.
+Mark-It-All-Down v2 is a local-first Tauri desktop converter, and since
+2026-10-04 it also carries the archived v1 source under `v1-swift/`.
 The current build has a native queue, file/folder pickers and drag/drop,
 same-folder or chosen-folder output routing, cancellation, collision-safe
 Markdown names, atomic writes, and Reveal output behavior.
+
+The single most important inherited asset is v1's PDF quality core: hybrid
+routing, per-page OCR classification that refuses partial Markdown, and a
+measured ~10.4x speedup on native-text PDFs. v2's current PDF path is simpler
+and does not yet reproduce that discipline.
 
 ### Conversion adapters
 
@@ -71,10 +85,15 @@ node --check web/app.js
 cargo tauri build --debug --bundles dmg
 ```
 
+On 2026-10-04, after the merge and a full `target/` wipe, `cargo test` passed
+again (4 tests, exit 0) on a cold rebuild.
+
 ## Known boundaries
 
 - Only an Apple Silicon macOS DMG is currently produced; Intel macOS and
-  Windows builds still need their own build/signing runs.
+  Windows builds still need their own build/signing runs. v1's Windows
+  portable bundle is preserved locally at
+  `/Users/george/Documents/Georges/01 🎯 Projects/Mark-It-Down/dist/windows/`.
 - Optional OCR and LibreOffice runtimes are not embedded in the DMG.
 - Office extraction is text-oriented; complex layout, tables, formulas, and
   embedded objects need fixture-based quality review.
@@ -87,10 +106,14 @@ cargo tauri build --debug --bundles dmg
 
 ## Next atomic task
 
-Install the fresh DMG on the second Apple Silicon Mac and convert the reported
-normal PDF. Record the result and the generated `.md` path. Then test one
-scanned PDF and one image to confirm whether the target Mac has the optional
-OCR runtimes. Do not delete prior outputs during this check.
+Port v1's per-page OCR classification into the Rust core. Today a PDF with no
+extractable text silently falls through to the renderer/OCR path; v1 instead
+classifies the pages that need OCR and refuses to write Markdown at all. That
+refusal is the correctness behavior v2 is missing.
+
+`cargo-tauri` is at `/Users/george/.cargo/bin/cargo-tauri` and is **not** on
+the default shell PATH in the current environment. Use the absolute path or
+add `~/.cargo/bin` to PATH before running `cargo tauri` commands.
 
 ## Human gates
 
