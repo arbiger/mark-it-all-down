@@ -1,0 +1,16 @@
+# Rust / Tauri build output
+target/
+src-tauri/target/
+
+# Generated application bundles
+dist/
+src-tauri/gen/
+
+# macOS noise
+.DS_Store
+*.log
+
+# Local editor / agent scratch
+.worktrees/
+.superpowers/
+.vscode/

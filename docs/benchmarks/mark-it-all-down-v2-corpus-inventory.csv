@@ -1,0 +1,2 @@
+fixture_id,corpus_version,visibility,category,format,extension,language,scenario,source_label,relative_path,sha256,bytes,pages_or_units,expected_route,gold_ref,license_ref,notes
+manual-outlined-pdf-001,phase0-draft,private-manual,PDF,PDF,.pdf,unknown,outlined/image-based,outlined manual,Tests/ManualFixtures/<private-filename-redacted>.pdf,c974cb66d4f70491742dc22e2a7d027102f810866447e66004621d4f10fb974e,75695475,14,selective-OCR,not-defined,not-redistributable,"Metadata only; private fixture not copied or exposed"
