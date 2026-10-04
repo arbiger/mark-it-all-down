@@ -44,6 +44,7 @@ src/                 Rust extraction core and format adapters
 src-tauri/           Tauri shell, commands, and packaging
 web/                 UI (drop zone, queue, destination picker, results)
 v1-swift/            Archived Mark-It-Down v1 SwiftUI source (reference only)
+v1-artifacts/        v1 Windows build and client fixtures (local, gitignored)
 docs/plans/          Product plan and evidence spec
 docs/benchmarks/     Corpus inventory and pilot results
 docs/history/        v1 design specs, hybrid PDF baseline, earlier plans
@@ -56,10 +57,11 @@ OCR classification, and a measured ~10.4x speedup on native-text PDFs. See
 
 ## Relationship to Mark-It-Down v1
 
-v1 remains a separate, working macOS app at
-<https://github.com/arbiger/mark-it-down>. It is not modified or deprecated by
-this project. The v2 plans, corpus, and pilot results that were originally
-drafted inside the v1 repository now live here, under `docs/`.
+v1 was consolidated into this repository on 2026-10-04. Its source, build
+assets, documentation, and Windows portable bundle now live here under
+`v1-swift/` and `v1-artifacts/`. The original repository remains available at
+<https://github.com/arbiger/mark-it-down> with its full history, and is not
+deprecated.
 
 ## Current limitations
 
@@ -75,3 +77,11 @@ drafted inside the v1 repository now live here, under `docs/`.
 
 - `DEV-LOG.md` — dated decisions and verification evidence
 - `HANDOFF.md` — current state and what the next operator needs
+
+## License
+
+MIT — see [`LICENSE`](LICENSE). Third-party component terms are recorded in
+[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md); all direct dependencies are
+permissive (MIT or MIT/Apache-2.0). Optional external tools such as Tesseract,
+Poppler, MuPDF, and LibreOffice are detected and invoked locally, never
+bundled, so their copyleft terms do not extend to this project.

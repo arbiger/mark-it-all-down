@@ -6,6 +6,9 @@ src-tauri/target/
 dist/
 src-tauri/gen/
 
+# Archived v1 build outputs and client fixtures (large, local-only)
+v1-artifacts/
+
 # macOS noise
 .DS_Store
 *.log
