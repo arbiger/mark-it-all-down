@@ -10,16 +10,21 @@
 
 ## Repositories
 
-- v2 (this project): <https://github.com/arbiger/mark-it-all-down>
-- v1 (separate, still working): <https://github.com/arbiger/mark-it-down>
+- This project: <https://github.com/arbiger/mark-it-all-down>
+- v1 history (consolidated into this repo on 2026-10-04):
+  <https://github.com/arbiger/mark-it-down>
 
-Both are public under the `arbiger` account. v1 was not modified by the merge
-apart from committing and publishing the hybrid PDF engine work as `2729685`.
+There is now **one local project folder**: `Mark-It-All-Down`. The separate
+`Mark-It-Down` folder was retired to Trash (`mark-it-down-v1-retired-230344`)
+after every file was confirmed present in this repo or in the v1 GitHub
+history. v1's repository keeps its full 33-commit history and is not
+deprecated.
 
 ## Current state
 
 Mark-It-All-Down v2 is a local-first Tauri desktop converter, and since
-2026-10-04 it also carries the archived v1 source under `v1-swift/`.
+2026-10-04 it also carries the archived v1 source under `v1-swift/` plus v1's
+build outputs and client fixtures under `v1-artifacts/` (gitignored).
 The current build has a native queue, file/folder pickers and drag/drop,
 same-folder or chosen-folder output routing, cancellation, collision-safe
 Markdown names, atomic writes, and Reveal output behavior.
@@ -92,8 +97,12 @@ again (4 tests, exit 0) on a cold rebuild.
 
 - Only an Apple Silicon macOS DMG is currently produced; Intel macOS and
   Windows builds still need their own build/signing runs. v1's Windows
-  portable bundle is preserved locally at
-  `/Users/george/Documents/Georges/01 🎯 Projects/Mark-It-Down/dist/windows/`.
+  portable bundle is preserved locally at `v1-artifacts/windows/` (gitignored,
+  never published).
+- The project is MIT licensed with third-party terms recorded in
+  `THIRD_PARTY_NOTICES.md`. Poppler (GPL-2.0-or-later) and MuPDF
+  (AGPL-3.0-or-later) are invoked as local executables, never bundled;
+  bundling either in a future release requires a fresh license review.
 - Optional OCR and LibreOffice runtimes are not embedded in the DMG.
 - Office extraction is text-oriented; complex layout, tables, formulas, and
   embedded objects need fixture-based quality review.
