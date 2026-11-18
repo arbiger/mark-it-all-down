@@ -65,7 +65,7 @@ installations before testing the packaged PDF fix.
 For development:
 
 ```sh
-cd "/Users/george/Documents/Georges/01 🎯 Projects/Mark-It-All-Down"
+cd "/Users/george/Documents/Georges/01 🎯 Projects/Utility Projects/Mark-It-All-Down"
 cargo tauri dev
 ```
 

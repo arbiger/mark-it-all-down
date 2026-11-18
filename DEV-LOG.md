@@ -206,3 +206,34 @@ full 33-commit history stay at github.com/arbiger/mark-it-down.
 ### Next step
 
 Unchanged: port v1's per-page OCR classification into the Rust core.
+
+## 2026-11-18 — Project moved to Utility Projects
+
+### Change
+
+The project moved from `01 🎯 Projects/Mark-It-All-Down` to
+`01 🎯 Projects/Utility Projects/Mark-It-All-Down`. The git remote, history,
+and all tracked files moved with it intact; the repository was already clean
+and synced to `origin/main` at `c47050c` before the move.
+
+### Impact checked
+
+- No LaunchAgent or crontab entry referenced this project, so no scheduled
+  work was affected by the move.
+- The DMG at `src-tauri/target/debug/bundle/dmg/` and the gitignored
+  `v1-artifacts/` (Windows portable bundle and client fixtures) both moved
+  intact.
+- `HANDOFF.md` had one absolute path pointing at the old location; updated to
+  the current root.
+
+### Cleanup
+
+`target/` (267 MB of Rust build cache) moved to Trash. Project size fell from
+996 MB to 729 MB, of which 714 MB is the gitignored v1 artifacts.
+
+### Verification
+
+```text
+git status   # clean, synced to origin/main
+cargo test   # 4 passed, exit 0
+```
